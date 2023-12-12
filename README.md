@@ -14,11 +14,21 @@
 
 Here's how `Console-Finances` looks like in action:
 
-![Console-Finances Screenshot](screenshot.png)
+![Console-Finances Screenshot](./Images/Screenshot.png)
+
 
 ## Deployment
 
-The application is deployed at [Console-Finances Live URL](deployed-application-url). Visit the link to see the application in action.
+The application is deployed and can be viewed live at the following URL:
+
+- [Console-Finances Live URL](https://6nhuseyin.github.io/Console-Finances)
+
+Visit the link to see the application in action.
+
+For the source code, visit the GitHub repository:
+
+- [GitHub Repository](https://github.com/6nhuseyin/Console-Finances)
+
 
 ## Application Quality
 
