@@ -88,35 +88,65 @@ let finances = [
 ];
 
 
+
 let totalMonths = 0;
 let total = 0;
 //let averageChange = 0;
-let greatestIncrease = 0;
-let greatestDecrease = 0;
+let greatestIncrease = finances[1][1] - finances[0][1];
+let greatestDecrease = finances[1][1] - finances[0][1];
 
-
+// The total number of months included in the dataset
 totalMonths = finances.length;
 
+
+// The net total amount of Profit/Losses over the entire period.
 for (let i = 0; i < totalMonths; i++) {
   total = total + finances[i][1];
 }
 
+// The average of the **changes** in Profit/Losses over the entire period.
 let sumTemporary = 0;
 let averageChange = 0;
-
+let greatestIncreaseMonth = '';
 for (let i = 1; i < totalMonths; i++) {
   sumTemporary = sumTemporary + finances[i][1] - finances[i - 1][1];
-  averageChange = sumTemporary / (totalMonths - 1);
+
+  
 }
+
+averageChange = sumTemporary / (totalMonths - 1);
+
+// The greatest increase in Profit/Losses (date and amount) over the entire period.
+
+for (let i = 1; i < totalMonths; i++) {
+  sumTemporary = finances[i][1] - finances[i - 1][1];
+  
+  if (greatestIncrease < sumTemporary) {
+    greatestIncrease = sumTemporary;
+    greatestIncreaseMonth = finances[i][0];
+  }
+ 
+}
+console.log(greatestIncrease);
+
+
+// The greatest decrease in Profit/Losses (date and amount) over the entire period.
+let greatestDecreaseMonth = '';
+for (let i = 1; i < totalMonths; i++) {
+  maximumDecreaseTemporary = finances[i][1] - finances[i - 1][1];
+  if (greatestDecrease > maximumDecreaseTemporary) {
+    greatestDecrease = maximumDecreaseTemporary;
+    greatestDecreaseMonth = finances[i][0];
+  }
+}
+console.log(greatestDecrease);
 
 console.log(`
 Financial Analysis
 ----------------
-Total Months: ${totalMonths + 1}
-Total: ${total}
-Average Change: ${averageChange}
-Greatest Increase in Profits/Losses: ${greatestIncrease}
-Greatest Decrease in Profits/Losses: ${greatestDecrease}
+Total Months: ${totalMonths}
+Total: $${total}
+Average Change: ${averageChange.toFixed(2)}
+Greatest Increase in Profits/Losses: ${greatestIncreaseMonth} ($${greatestIncrease})
+Greatest Decrease in Profits/Losses: ${greatestDecreaseMonth} ($${greatestDecrease})
 `);
-
-
