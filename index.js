@@ -89,14 +89,14 @@ let finances = [
 
 
 
-let totalMonths = 0;
+let totalMonths = finances.length; // The total number of months included in the dataset
 let total = 0;
-//let averageChange = 0;
 let greatestIncrease = finances[1][1] - finances[0][1];
 let greatestDecrease = finances[1][1] - finances[0][1];
+let greatestIncreaseMonth = '';
+let greatestDecreaseMonth = '';
 
-// The total number of months included in the dataset
-totalMonths = finances.length;
+
 
 
 // The net total amount of Profit/Losses over the entire period.
@@ -104,14 +104,15 @@ for (let i = 0; i < totalMonths; i++) {
   total = total + finances[i][1];
 }
 
-// The average of the **changes** in Profit/Losses over the entire period.
 let sumTemporary = 0;
 let averageChange = 0;
-let greatestIncreaseMonth = '';
+
+
+// The average of the **changes** in Profit/Losses over the entire period.
+
+
 for (let i = 1; i < totalMonths; i++) {
   sumTemporary = sumTemporary + finances[i][1] - finances[i - 1][1];
-
-  
 }
 
 averageChange = sumTemporary / (totalMonths - 1);
@@ -127,11 +128,9 @@ for (let i = 1; i < totalMonths; i++) {
   }
  
 }
-console.log(greatestIncrease);
-
 
 // The greatest decrease in Profit/Losses (date and amount) over the entire period.
-let greatestDecreaseMonth = '';
+
 for (let i = 1; i < totalMonths; i++) {
   maximumDecreaseTemporary = finances[i][1] - finances[i - 1][1];
   if (greatestDecrease > maximumDecreaseTemporary) {
@@ -139,9 +138,8 @@ for (let i = 1; i < totalMonths; i++) {
     greatestDecreaseMonth = finances[i][0];
   }
 }
-console.log(greatestDecrease);
 
-console.log(`
+let result = (`
 Financial Analysis
 ----------------
 Total Months: ${totalMonths}
@@ -150,3 +148,6 @@ Average Change: ${averageChange.toFixed(2)}
 Greatest Increase in Profits/Losses: ${greatestIncreaseMonth} ($${greatestIncrease})
 Greatest Decrease in Profits/Losses: ${greatestDecreaseMonth} ($${greatestDecrease})
 `);
+
+console.log(result);
+alert(result);
