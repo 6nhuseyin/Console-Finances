@@ -88,18 +88,35 @@ let finances = [
 ];
 
 
+let totalMonths = 0;
+let total = 0;
+//let averageChange = 0;
+let greatestIncrease = 0;
+let greatestDecrease = 0;
 
 
+totalMonths = finances.length;
 
-let totalMonths = finances.length;
+for (let i = 0; i < totalMonths; i++) {
+  total = total + finances[i][1];
+}
+
+let sumTemporary = 0;
+let averageChange = 0;
+
+for (let i = 1; i < totalMonths; i++) {
+  sumTemporary = sumTemporary + finances[i][1] - finances[i - 1][1];
+  averageChange = sumTemporary / (totalMonths - 1);
+}
+
 console.log(`
 Financial Analysis
 ----------------
-Total Months:  + ${}
-Total: ${}
-Average Change: ${}
-Greatest Increase in Profits/Losses: ${}
-Greatest Decrease in Profits/Losses: ${}
-`
-)
+Total Months: ${totalMonths + 1}
+Total: ${total}
+Average Change: ${averageChange}
+Greatest Increase in Profits/Losses: ${greatestIncrease}
+Greatest Decrease in Profits/Losses: ${greatestDecrease}
+`);
+
 
